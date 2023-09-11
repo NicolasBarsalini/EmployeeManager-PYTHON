@@ -9,7 +9,7 @@ def register():
     try:
         name = name_entry.get()
         salary = float(salary_entry.get())
-        if name != None and salary != None and type(salary) == float:
+        if name != None and salary != None and type(salary) == float: 
             try:
                 db.insert(name, salary)
             except Exception as e:
@@ -19,23 +19,23 @@ def register():
         msg.config(text="Valores inválidos!")
 
 def exit():
-    db.connection_close()
+    db.connection_close() #to close the connection
     sys.exit()
 
 def start_tkinter():
     root = tk.Tk()
     root.title("Atom.Inc")
-    root.geometry("1920x1080")  # Tamanho da janela (largura x altura)
+    root.geometry("1920x1080")  #window measurement
 
     name_label = tk.Label(root, text="Insira o nome do empregado:", font=("Arial", 20))
-    name_label.pack(pady=15)  # Espaçamento vertical
+    name_label.pack(pady=15)  # vertical spacing
 
     global name_entry
     name_entry = tk.Entry(root, font=("Arial", 20))
     name_entry.pack(pady=15)
 
     salary_label = tk.Label(root, text="Insira o salário do empregado:", font=("Arial", 20))
-    salary_label.pack(pady=15)  # Espaçamento vertical
+    salary_label.pack(pady=15)  # vertical spacing
     
     global salary_entry
     salary_entry = tk.Entry(root, font=("Arial", 20))
@@ -62,7 +62,7 @@ def start_tkinter():
     
     root.mainloop()
 
-db.connect()
+db.connect() #to connect to SQL Server
 interface_thread = threading.Thread(target=start_tkinter)
 interface_thread.start()
 

@@ -4,9 +4,9 @@ import database_connect as db
 
 def exit_filter_view():
     try:
-        filter_view_window.destroy()  # Tenta fechar a janela de visualização
-    except NameError:  # Se a janela de visualização não estiver definida
-        pass  # Continua a execução sem fazer nada
+        filter_view_window.destroy()  # Try closing the preview window
+    except NameError:  #if the preview window is not defined
+        pass  #still running execution without doing anything
 
 def find():
     if name_entry.get() != "":
@@ -22,13 +22,13 @@ def find():
             msg_empty.config(text="Não encontrado!")
 
 def filter_view():
-    global filter_view_window  # Define a janela de visualização como global
+    global filter_view_window  #defines the preview window as global
     filter_view_window = tk.Tk()
     filter_view_window.title("Filter View")
-    filter_view_window.geometry("600x600")  # Tamanho da janela (largura x altura)
+    filter_view_window.geometry("600x600")  #window measurement (width x height)
 
     name_label = tk.Label(filter_view_window, text="Insira o nome do empregado:", font=("Arial", 16))
-    name_label.pack(pady=15)  # Espaçamento vertical
+    name_label.pack(pady=15)  #vertical spacing
 
     global name_entry
     name_entry = tk.Entry(filter_view_window, font=("Arial", 20))

@@ -7,9 +7,9 @@ def exit_view():
     try:
         global selected_item
         selected_item = None
-        view_window.destroy()  # Tenta fechar a janela de visualização
-    except NameError:  # Se a janela de visualização não estiver definida
-        pass  # Continua a execução sem fazer nada
+        view_window.destroy()  # Try closing the preview window
+    except NameError:  # if the preview window is not defined
+        pass  #still running execution without doing anything
 
 def on_click(event):
     global selected_item
@@ -23,21 +23,21 @@ def delete(item):
         id = int(item[0])
         if db.delete(id):
             msg_selected.config(text="Removido do banco de dados!", fg="green")
-            selected_item = None  # Atualiza o item selecionado
-            employees = [e for e in employees if e.getID() != id]  # Remove o funcionário da lista
-            listbox.delete(0, tk.END)  # Limpa a lista
+            selected_item = None  # update the selected item
+            employees = [e for e in employees if e.getID() != id]  # removes the employee from the list
+            listbox.delete(0, tk.END)  # clear the list
             for i in sorted(employees, key=lambda employee: employee.getName()):
-                listbox.insert(tk.END, i.toString())  # Insere os funcionários atualizados
+                listbox.insert(tk.END, i.toString())  # insert the updated employees
         else:
             msg_selected.config(text="A remoção falhou!", fg="red")
     else:
         msg_selected.config(text="Selecione alguma das opções antes de remover!")
 
 def view():
-    global view_window  # Define a janela de visualização como global
+    global view_window #defines the preview window as global
     view_window = tk.Tk()
     view_window.title("View")
-    view_window.geometry("600x600")  # Tamanho da janela (largura x altura)
+    view_window.geometry("600x600") #window measurement (width x height)
 
     scrollbar = tk.Scrollbar(view_window, orient=tk.VERTICAL)
     scrollbar.pack(side=tk.RIGHT, fill=tk.Y)

@@ -1,4 +1,4 @@
-class Employee:
+class Employee: #class Employee, modify as you want
     def __init__(self, employee_id, name, salary):
         self.__employee_id = employee_id
         self.__name = name

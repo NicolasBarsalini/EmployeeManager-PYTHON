@@ -64,11 +64,11 @@ def delete(employee_id):
             cursor = conn.cursor()
             command = f"DELETE FROM {table} WHERE EmployeeID = ?"
             cursor.execute(command, (employee_id,))
-            conn.commit()  # Adicione esta linha para efetivar a exclusão
+            conn.commit() 
             print("Deleted successfully!")
-            return True  # Indica que a exclusão foi bem-sucedida
+            return True
         except Exception as e:
             print(f"Error during delete: {e}")
     else:
         print("You must be connected to use this function!")
-    return False  # Indica que a exclusão falhou
+    return False 
